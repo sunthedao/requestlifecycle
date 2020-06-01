@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #car {
+      width: 80px;
+      height: 50px;
+      position: absolute;
+      background-color: red;
+    }
+
+    .wheel {
+      border-radius: 50px;
+      background-color: black;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="car">
+    <div class="wheel" id='w1' style="top: 40px;"></div>
+    <div class="wheel" id='w2' style="top: 40px;left: 60px;"></div>
+  </div>
+
+  <script src="jquery.js"></script>
+  <script>
+    class Car {
+      x
+      y
+      color
+      wheels
+      element
+
+      constructor(color, wheels, x, y) {
+        const el = $('#car')
+
+        this.x = x
+        this.y = y
+        this.color = color
+        this.wheels = wheels
+
+        this.element = el
+
+        this.run()
+
+      }
+
+
+
+      run() {
+        this.element.css({
+          top: `${this.y}px`,
+          left: `${this.x}px`,
+          background: this.color
+        })
+      }
+
+      moveUp() {
+        this.y -= 10
+        console.log('moveUp')
+        this.wheels.rotates()
+
+        this.run()
+      }
+
+      moveDown() {
+        this.y += 10
+        console.log('moveDown')
+        this.wheels.rotates()
+        this.run()
+      }
+
+      moveLeft() {
+        this.x -= 10
+        console.log('moveLeft')
+        this.wheels.rotates()
+        this.run()
+      }
+
+      moveRight() {
+        this.x += 10
+        console.log('moveRight')
+        this.wheels.rotates()
+        this.run()
+      }
+
+    }
+
+    class Wheels {
+      wheels = []
+
+      constructor(wheels) {
+        this.wheels = wheels
+      }
+
+      rotates() {
+        console.log('Wheels rotate')
+
+        this.wheels.forEach(wheel => {
+          wheel.rotate()
+        })
+      }
+    }
+
+    class Wheel {
+      color
+      element
+      name
+
+      constructor(id) {
+        this.element = $(id)
+        this.name = id
+      }
+
+      rotate() {
+        console.log(`Wheel : ${this.name} is rotate`)
+
+        const colors = ['#FF0000', '#00FF00', '#0000FF', '#000000']
+
+        let i = 0
+        let changeColor = setInterval(() => {
+          if (i === colors.length) {
+            clearInterval(changeColor)
+          }
+
+          this.element.css({
+            background: colors[i]
+          })
+
+          i++
+        }, 500);
+      }
+    }
+
+    const wheel1 = new Wheel('#w1')
+    const wheel2 = new Wheel('#w2')
+
+    const wheels = new Wheels([wheel1, wheel2])
+
+    const car1 = new Car('#0000FF', wheels, 0, 0)
+
+    window.onkeyup = e => {
+      if (e.key === 'ArrowLeft') {
+        car1.moveLeft()
+      } else if (e.key === 'ArrowRight') {
+        car1.moveRight()
+      } else if (e.key === 'ArrowUp') {
+        car1.moveUp()
+      } else if (e.key === 'ArrowDown') {
+        car1.moveDown()
+      }
+
+    }
+
+  </script>
+</body>
+
+</html>
