@@ -4,7 +4,7 @@
 // require '/xampp/htdocs/phpOOP/controller/controller.php';
 
 
-
+// require (__DIR__. '/../Middleware/middleware.php');
 
 if (isset($_GET['td'])) {
     if ($_GET['td'] == 'student') {
@@ -30,7 +30,11 @@ if (isset($_GET['teacher'])){
 
     // $teacher = $_GET['teacher'];
 
-    require (__DIR__.'/../controller/usercontroller.php');
+   
+        require (__DIR__ .'/../Middleware/middleware.php');
+
+
+    // require (__DIR__.'/../controller/usercontroller.php');
     
 }
 

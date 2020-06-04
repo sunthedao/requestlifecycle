@@ -1,7 +1,9 @@
-<!-- <?php
+<?php
 
 require './../request/request.php';
+require './../database/connect.php';
 
+session_start();
 
 ?>
 
@@ -10,31 +12,31 @@ require './../request/request.php';
 
 <head>
 
-    <?php include('header.php') ?>
+    <?php include('./../view/header.php') ?>
 
 </head>
 
 <body>
 
-    <div class="container mt-2">
+    <div class="container-fluid mt-2">
         <div class="row">
             <div class="col-md-12">
-                <?php include('menu.php') ?>
+                <?php include('./../view/menu.php') ?>
             </div>
         </div>
     </div>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
                 <div class="container">
-                    <?php include('verticalmenu.php') ?>
-
+                   
+                    <?php include('./../view/verticalmenu.php') ?>
                 </div>
             </div>
 
             <div class="col-md-9 text-center">
-                <h1 class="mt-2"> REQUEST LIFECYCLE </h1>
+                <!-- <h1 class="mt-2"> REQUEST LIFECYCLE </h1> -->
                 <div class="container">
                
                     <?php
@@ -96,4 +98,4 @@ require './../request/request.php';
 
 </body>
 
-</html> -->
+</html>
