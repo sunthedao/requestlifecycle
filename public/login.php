@@ -1,9 +1,9 @@
 <?php
-
+session_start();
 require(__DIR__ . '/../database/connect.php');
 
 $connection = DB();
-session_start();
+
 
 if (isset($_POST['login'])) {
     $username = $_POST['user'];
